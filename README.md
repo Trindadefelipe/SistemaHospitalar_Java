@@ -1,34 +1,47 @@
-# 🚀 [Nome do Seu Projeto]
+# Projeto Final - Desenvolvimento de Software (Java)
 
-> **Objetivo do Projeto:** Desenvolver uma aplicação em Java que resolva um problema real do cotidiano ou do mercado atual, utilizando conceitos de Programação Orientada a Objetos (POO). O sistema propõe mecanismos para organizar, facilitar e viabilizar a demanda de [inserir a demanda específica aqui, ex: gestão de agendamentos médicos].
+Este repositório contém o Projeto Final da disciplina de Desenvolvimento de Software. O objetivo é desenvolver uma aplicação em Java para resolver um problema real do cotidiano ou do mercado (como um sistema hospitalar, delivery, biblioteca, etc.), aplicando conceitos consolidados de Programação Orientada a Objetos (POO).
 
-## 📋 Sobre a Aplicação
+## 📌 Funcionalidades Principais
 
-[Nome do Projeto] é uma solução desenvolvida em Java que visa otimizar [descreva brevemente o processo que o software melhora]. Através da aplicação de conceitos sólidos de POO (Encapsulamento, Herança, Polimorfismo e Abstração), o sistema garante um código manutenível, escalável e alinhado com as necessidades do mercado.
+* **Autenticação:** Sistema de login obrigatório para iniciar a aplicação. O usuário possui um limite de 3 tentativas de acesso. Após 3 erros, é exigido o cadastro de uma nova senha, que não pode ser igual a nenhuma das 3 últimas cadastradas.
+* **Gestão de Dados:** Sistema interativo com menu navegável para Cadastro, Consulta, Alteração e Exclusão de registros.
+* **Relatórios:** Geração de relatórios cruzando informações de múltiplas classes.
+* **Persistência:** O armazenamento dos dados (leitura e escrita) é feito localmente através de arquivos.
 
-### Principais Funcionalidades
+## 💻 Requisitos Técnicos (POO)
 
-* **[Funcionalidade 1]:** Descrição clara do que ela faz e qual problema resolve.
-* **[Funcionalidade 2]:** Descrição clara do que ela faz e qual problema resolve.
-* **[Funcionalidade 3]:** Descrição clara do que ela faz e qual problema resolve.
+A arquitetura do sistema foi desenhada para aplicar os seguintes conceitos obrigatórios:
 
-## 💻 Tecnologias e Conceitos Aplicados
+* **Estrutura de Classes:** O projeto possui no mínimo 5 classes coerentes com o tema. Pelo menos 3 delas são classes compostas (possuem objetos de outras classes como atributos).
+* **Encapsulamento e Base:** Uso de atributos privados, construtores e métodos Getters/Setters. O método `toString()` está implementado em todas as classes.
+* **Conceitos Avançados:** Implementação prática de Herança, Polimorfismo, Relacionamento entre classes, Sobrescrita de métodos (`@Override`) e utilização de Classes Abstratas ou Interfaces.
 
-* **Linguagem:** Java (versão X)
-* **Paradigma:** Programação Orientada a Objetos (POO)
-* **Padrões de Projeto:** [Se aplicável, listar padrões usados, ex: MVC, Singleton]
-* **Armazenamento de Dados:** [Listar se houver banco de dados ou manipulação de arquivos]
+## 📁 Estrutura de Diretórios
 
-## 🏗️ Estrutura e Arquitetura do Sistema
+A organização do código-fonte segue a separação de responsabilidades recomendada:
 
-Breve explicação de como o sistema foi modelado (quais são as entidades principais e como elas interagem).
+* `Main.java` - Ponto de entrada e menu interativo.
+* `classes/` - Entidades e modelos de negócio.
+* `interfaces/` e `abstract/` - Contratos e classes base do sistema.
+* `arquivos/` - Lógica de leitura e escrita para persistência.
+* `relatorios/` - Geração e formatação de saídas de dados.
+* `utils/` - Classes utilitárias e ferramentas auxiliares.
 
-* `model`: Contém as classes de negócio e entidades.
-* `controller`: Gerencia o fluxo de dados entre a interface e o modelo.
-* `view` / `ui`: [Se houver interface gráfica ou console interativo].
+## 📝 Padrões de Versionamento (Git)
 
-## ⚙️ Como Executar o Projeto
+Para garantir um histórico organizado durante a evolução do código, o repositório adota o seguinte padrão semântico para commits:
 
-1. Clone este repositório:
-   ```bash
-   git clone [https://github.com/seu-usuario/nome-do-projeto.git](https://github.com/seu-usuario/nome-do-projeto.git)
+* `feat`: Adição de nova funcionalidade (ex: criação do login, nova classe).
+* `fix`: Correção de bugs ou falhas nas regras de negócio.
+* `docs`: Atualizações na documentação ou comentários.
+* `refactor`: Reestruturação de código que não altera o comportamento externo.
+
+## ✅ Checklist de Conclusão
+
+- [ ] Sistema executando corretamente
+- [ ] Login e controle de senhas funcionando
+- [ ] Uso de herança, polimorfismo e interfaces/classes abstratas
+- [ ] Dados sendo persistidos em arquivos corretamente
+- [ ] Relatórios e menu interativo operacionais
+- [ ] Código organizado e método `toString` implementado

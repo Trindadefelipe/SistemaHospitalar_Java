@@ -6,7 +6,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 
-abstract class Usuario{
+public abstract class Usuario{
   protected String login;
   protected String senha;
   protected ArrayList <String> historicoSenhas;

@@ -1,6 +1,6 @@
 package model;
 
-abstract class Atendimento{
+public abstract class Atendimento{
   protected String paciente;
   protected String medico;
   protected String data;

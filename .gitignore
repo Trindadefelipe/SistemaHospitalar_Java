@@ -1,0 +1,8 @@
+# Arquivos compilados do Java (gerados automaticamente — não versionar)
+*.class
+bin/
+out/
+
+# Arquivos de dados gerados em tempo de execução (opcional — descomente se não quiser versionar)
+# arquivos/*.txt
+# relatorios/*

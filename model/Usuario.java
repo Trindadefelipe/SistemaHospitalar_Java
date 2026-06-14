@@ -1,3 +1,5 @@
+package model;
+
 import java.util.*;
 import java.io.BufferedReader;
 import java.io.File;
@@ -58,28 +60,5 @@ abstract class Usuario{
   @Override
   public String toString(){
     return "Usuario{login='" + "'}";
-  }
-}
-
-abstract class Atendimento{
-  protected String paciente;
-  protected String medico;
-  protected String data;
-  protected double valor;
-
-  public Atendimento(String paciente, String medico, String data, double valor){
-    this.paciente = paciente;
-    this.medico = medico;
-    this.data = data;
-    this.valor = valor;
-  }
-
-  public void 
-
-}
-
-public class SistemaHospitalar {
-  public static void main(String[] args) {
-    
   }
 }

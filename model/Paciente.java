@@ -1,6 +1,6 @@
 package model;
 
-public class Paciente extends Usuario{
+public class Paciente extends Usuario implements Exportavel{
     private String nomePaciente;
     private String cpf;
     private Plano plano;
@@ -40,6 +40,11 @@ public class Paciente extends Usuario{
     @Override
     public String toString(){
         return "Paciente: " + getNomePaciente() + " - CPF: " + getCpf() + " - Plano: " + getPlano();
+    }
+
+    @Override
+    public String gerarLinhasCsv(){
+        return "P" + ";" + getLogin() + ";" + getSenha() + ";" + String.join(",", historicoSenhas) + ";" + getNomePaciente() + ";" + getCpf() + ";" + plano.getNomePlano();
     }
 
 

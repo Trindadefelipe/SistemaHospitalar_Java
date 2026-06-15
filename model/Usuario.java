@@ -1,10 +1,6 @@
 package model;
 
-import java.util.*;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.util.ArrayList;
 
 public abstract class Usuario{
   protected String login;
@@ -59,6 +55,6 @@ public abstract class Usuario{
 
   @Override
   public String toString(){
-    return "Usuario{login='" + "'}";
+    return "Usuario - login: " + getLogin() + " | senha: " + getSenha();
   }
 }

@@ -36,4 +36,12 @@ public abstract class Atendimento{
 
   public abstract double calcularCusto();
 
+  protected double aplicarDesconto(double bruto){
+    if (getPaciente().getPlano() == null) { //particular
+      return bruto;
+    } else {
+      return bruto - (bruto * getPaciente().getPlano().getPercentualCobertura() / 100);
+    }
+  }
+
 }

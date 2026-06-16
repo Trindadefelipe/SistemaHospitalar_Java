@@ -43,7 +43,12 @@ public class GerenciadorArquivos {
                 if (tipo.equals("M")) {
                     u = new Medico(login, senha, campos[4], campos[5], campos[6]);
                 } else if (tipo.equals("P")) {
-                    Plano plano = new Plano(campos[6], Boolean.parseBoolean(campos[7]), Integer.parseInt(campos[8]));
+                    Plano plano;
+                    if (campos[6].equals("Particular")) {
+                        plano = null;
+                    } else {
+                        plano = new Plano(campos[6], Boolean.parseBoolean(campos[7]), Integer.parseInt(campos[8]));
+                    }
                     u = new Paciente(login, senha, campos[4], campos[5], plano);
                 }
 
@@ -60,5 +65,18 @@ public class GerenciadorArquivos {
             System.out.println("Arquivo não encontrado, iniciando vazio.");
         }
         return lista;
+    }
+
+    public void salvarRelatorio(ArrayList<Usuario> usuarios, String caminho) {
+        try {
+            BufferedWriter bw = new BufferedWriter(new FileWriter(caminho));
+            for (Usuario u : usuarios) {
+                bw.write(u.gerarLinhasCsv());
+                bw.newLine();
+            }
+            bw.close();
+        } catch (IOException e) {
+            System.out.println("Erro ao salvar relatório: " + e.getMessage());
+        }
     }
 }

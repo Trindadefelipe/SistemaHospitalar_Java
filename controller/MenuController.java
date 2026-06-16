@@ -37,7 +37,7 @@ public class MenuController {
                     excluir();
                     break;
                 case "5":
-                    view.mostrarMensagem("Atendimentos - em breve!");
+                    new AtendimentoController(usuarios).abrirMenu();
                     break;
                 case "6":
                     gerarRelatorio();
@@ -60,12 +60,22 @@ public class MenuController {
             String senha = view.pedirDado("Senha: ");
             String nome = view.pedirDado("Nome: ");
             String cpf = view.pedirDado("CPF: ");
-            String nomePlano = view.pedirDado("Plano (Particular/Ouro/Prata): ");
+            String nomePlano = view.pedirDado("Plano (Particular/Hospitalar/Unimed): ");
             Plano plano = null;
-            if (!nomePlano.equals("Particular")) {
-                String obs = view.pedirDado("Tem obstetrícia? (true/false): ");
-                String cob = view.pedirDado("Percentual de cobertura: ");
-                plano = new Plano(nomePlano, Boolean.parseBoolean(obs), Integer.parseInt(cob));
+            if (!nomePlano.equalsIgnoreCase("Particular")) {
+                Boolean obs = null;
+                while (obs == null) {
+                    String txt = view.pedirDado("Tem obstetrícia? (S/N): ");
+                    if (txt.equalsIgnoreCase( "S")) {
+                        obs = true;
+                    } else if(txt.equalsIgnoreCase(                 "N")){
+                        obs = false;
+                    } else {
+                        System.out.println("Opção inválida!");
+                    }
+                }
+                String cob = view.pedirDado("Percentual de cobertura (25 ou 50): ");
+                plano = new Plano(nomePlano, obs, Integer.parseInt(cob));
             }
             usuarios.add(new Paciente(login, senha, nome, cpf, plano));
             view.mostrarMensagem("Paciente cadastrado!");

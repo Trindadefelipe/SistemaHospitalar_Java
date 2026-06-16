@@ -31,17 +31,20 @@ public class AtendimentoController {
         int tipo = view.pedirTipoAtendimento();
         String data = view.pedirDataAtendimento();
         double valor = view.pedirValorBase();
-        String tipoExame = view.pedirTipoEspecialidade();
-        String tipoCirurgia = view.pedirTipoEspecificoCirurgia();
-        String tipoConsulta = view.pedirTipoEspecialidade();
 
         Atendimento at;
 
         if (tipo == 2) {
+            String tipoExame = view.pedirTipoEspecificoExame();
+
             at = new Exame(p, m, data, valor, tipoExame);
         } else if (tipo == 3) {
+            String tipoCirurgia = view.pedirTipoEspecificoCirurgia();
+
             at = new Cirurgia(p, m, data, valor, tipoCirurgia);
         } else {
+            String tipoConsulta = view.pedirTipoEspecialidade();
+            
             at = new Consulta(p, m, data, valor, tipoConsulta);
         }
 

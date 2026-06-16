@@ -3,7 +3,7 @@ package view;
 import java.util.Scanner;
 
 public class MenuView {
-    private Scanner scanner = new Scanner(System.in);
+    private Scanner entrada = Entrada.entrada;
 
     public String mostrarMenu() {
         System.out.println("==========================");
@@ -18,7 +18,7 @@ public class MenuView {
         System.out.println("0 - Sair");
         System.out.println("==========================");
         System.out.print("Escolha uma opção: ");
-        return scanner.nextLine();
+        return entrada.nextLine();
     }
 
     public String cadastrarUsuario() {
@@ -26,7 +26,7 @@ public class MenuView {
         System.out.println("1 - Paciente");
         System.out.println("2 - Médico");
         System.out.print("Escolha: ");
-        return scanner.nextLine();
+        return entrada.nextLine();
     }
 
     public void mostrarMensagem(String msg) {
@@ -35,7 +35,7 @@ public class MenuView {
 
     public String pedirDado(String mensagem) {
         System.out.print(mensagem);
-        return scanner.nextLine();
+        return entrada.nextLine();
         
     }
 }

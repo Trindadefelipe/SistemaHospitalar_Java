@@ -3,16 +3,16 @@ package view;
 import java.util.Scanner;
 
 public class LoginView {
-    private Scanner scanner = new Scanner(System.in);
+    private Scanner entrada = Entrada.entrada;;
 
     public String pedirLogin() {
         System.out.println("Digite seu Login: ");
-        return scanner.nextLine();
+        return entrada.nextLine();
     }
 
     public String pedirSenha() {
         System.out.println("Digite sua Senha: ");
-        return scanner.nextLine();
+        return entrada.nextLine();
     }
 
     public void mostrarSenhaErrada() {
@@ -25,7 +25,7 @@ public class LoginView {
 
     public String pedirNovaSenha() {
         System.out.println("Digite uma nova senha");
-        return scanner.nextLine();
+        return entrada.nextLine();
     }
 
     public void mostrarSenhaJaUsada() {

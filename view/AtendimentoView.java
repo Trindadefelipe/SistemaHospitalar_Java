@@ -6,11 +6,11 @@ import model.Paciente;
 import model.Medico;
 
 public class AtendimentoView {
-    private Scanner entrada = new Scanner(System.in);
+    private Scanner entrada = Entrada.entrada;
 
     public void mostrarPacientes(ArrayList<Paciente> pacientes) {
-        for (Paciente paciente : pacientes) {
-            System.out.println(paciente);
+        for (int i = 0; i < pacientes.size(); i++) {
+            System.out.println(i + " - " + pacientes.get(i));
         }
     }
 
@@ -30,17 +30,18 @@ public class AtendimentoView {
 
     public int escolherPaciente(){
         System.out.print("Digite o n° do paciente desejado: ");
-        return entrada.nextInt();
+        return Integer.parseInt(entrada.nextLine());
+        
     }
 
     public int escolherMedico(){
         System.out.print("Digite o n° do médico desejado: ");
-        return entrada.nextInt();
+        return Integer.parseInt(entrada.nextLine());
     }
 
     public int pedirTipoAtendimento(){
         System.out.print("Digite o n° do atendimento desejado: ");
-        return entrada.nextInt();
+        return Integer.parseInt(entrada.nextLine());
     }
 
     public String pedirDataAtendimento(){
@@ -50,7 +51,7 @@ public class AtendimentoView {
 
     public double pedirValorBase(){
         System.out.print("Digite o valor base: ");
-        return entrada.nextDouble();
+        return Double.parseDouble(entrada.nextLine());
     }
 
     public String pedirTipoEspecificoExame(){

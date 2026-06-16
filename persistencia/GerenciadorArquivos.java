@@ -7,6 +7,7 @@ import model.Paciente;
 import model.Plano;
 
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.BufferedReader;
@@ -16,6 +17,7 @@ public class GerenciadorArquivos {
 
     public void salvarUsuarios(ArrayList<Usuario> usuarios) {
         try {
+            new File("arquivos").mkdirs();
             BufferedWriter bw = new BufferedWriter(new FileWriter("arquivos/usuarios.txt"));
             for (Usuario u : usuarios) {
                 bw.write(u.gerarLinhasCsv());
@@ -69,6 +71,7 @@ public class GerenciadorArquivos {
 
     public void salvarRelatorio(ArrayList<Usuario> usuarios, String caminho) {
         try {
+            new File("relatorios").mkdirs();
             BufferedWriter bw = new BufferedWriter(new FileWriter(caminho));
             for (Usuario u : usuarios) {
                 bw.write(u.gerarLinhasCsv());

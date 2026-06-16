@@ -1,47 +1,88 @@
-# Projeto Final - Desenvolvimento de Software (Java)
+# 🏥 Sistema Hospitalar — Projeto Final (Java / POO)
 
-Este repositório contém o Projeto Final da disciplina de Desenvolvimento de Software. O objetivo é desenvolver uma aplicação em Java para resolver um problema real do cotidiano ou do mercado (como um sistema hospitalar, delivery, biblioteca, etc.), aplicando conceitos consolidados de Programação Orientada a Objetos (POO).
+Aplicação de console em Java que gerencia um hospital: **login com controle de senha**,
+**cadastro de pacientes e médicos**, **registro de atendimentos** (consulta, exame e cirurgia)
+com **cálculo de fatura**, **relatórios** e **persistência em arquivo**. Desenvolvido para a
+disciplina de Desenvolvimento de Software, aplicando os pilares da Programação Orientada a
+Objetos (POO) sobre uma arquitetura **MVC**.
 
-## 📌 Funcionalidades Principais
+## 📌 Funcionalidades
 
-* **Autenticação:** Sistema de login obrigatório para iniciar a aplicação. O usuário possui um limite de 3 tentativas de acesso. Após 3 erros, é exigido o cadastro de uma nova senha, que não pode ser igual a nenhuma das 3 últimas cadastradas.
-* **Gestão de Dados:** Sistema interativo com menu navegável para Cadastro, Consulta, Alteração e Exclusão de registros.
-* **Relatórios:** Geração de relatórios cruzando informações de múltiplas classes.
-* **Persistência:** O armazenamento dos dados (leitura e escrita) é feito localmente através de arquivos.
+* **Autenticação:** login obrigatório com até **3 tentativas**. Após 3 erros, exige o cadastro
+  de uma nova senha, que **não pode repetir nenhuma das 3 últimas** já usadas.
+* **CRUD:** menu interativo para Cadastrar, Consultar, Alterar e Excluir usuários.
+* **Atendimentos e Fatura:** registro de Consulta/Exame/Cirurgia com cálculo de custo e desconto
+  conforme o plano de saúde do paciente (vitrine do **polimorfismo**).
+* **Relatórios:** geração de arquivo `.csv` cruzando informações de múltiplas classes.
+* **Persistência:** leitura e escrita dos dados em arquivo de texto (`arquivos/usuarios.txt`).
 
-## 💻 Requisitos Técnicos (POO)
+## 🧱 Conceitos de POO aplicados
 
-A arquitetura do sistema foi desenhada para aplicar os seguintes conceitos obrigatórios:
+| Conceito | Onde aparece |
+|---|---|
+| **Herança** | `Usuario → Paciente/Medico` · `Atendimento → Consulta/Exame/Cirurgia` |
+| **Classes abstratas** | `Usuario`, `Atendimento` (moldes que não se instanciam sozinhos) |
+| **Interface** | `Exportavel` (contrato `gerarLinhasCsv()`), implementada por Paciente e Medico |
+| **Polimorfismo** | `Fatura.calcularTotalFatura()` chama `calcularCusto()` e cada filha roda a sua versão (ligação tardia) |
+| **Composição (TEM-UM)** | Paciente↔Plano · Atendimento↔Paciente/Medico · Fatura↔Atendimentos |
+| **Encapsulamento** | atributos `private`/`protected` + getters/setters |
+| **Sobrescrita** | `@Override` em `calcularCusto()` e `toString()` (presente em todas as classes) |
 
-* **Estrutura de Classes:** O projeto possui no mínimo 5 classes coerentes com o tema. Pelo menos 3 delas são classes compostas (possuem objetos de outras classes como atributos).
-* **Encapsulamento e Base:** Uso de atributos privados, construtores e métodos Getters/Setters. O método `toString()` está implementado em todas as classes.
-* **Conceitos Avançados:** Implementação prática de Herança, Polimorfismo, Relacionamento entre classes, Sobrescrita de métodos (`@Override`) e utilização de Classes Abstratas ou Interfaces.
+## 📁 Estrutura (arquitetura MVC)
 
-## 📁 Estrutura de Diretórios
+```
+SistemaHospitalar_Java/
+├── Main.java                  → liga o sistema: carrega dados → login → menu → salva
+├── model/                     → DADOS + REGRAS (não imprime, não lê teclado)
+│   ├── Usuario.java (abstrata) Paciente · Medico · Plano
+│   ├── Atendimento.java (abstrata) Consulta · Exame · Cirurgia
+│   ├── Fatura.java             Exportavel.java (interface)
+├── view/                      → só entrada/saída no console (Scanner / println)
+│   └── LoginView · MenuView · AtendimentoView · Entrada (Scanner único)
+├── controller/                → coordena view ↔ model
+│   └── Login · MenuController · AtendimentoController
+├── persistencia/              → ÚNICA classe que mexe em arquivo (try/catch)
+│   └── GerenciadorArquivos
+├── arquivos/                  → dados salvos (usuarios.txt) — criado em runtime
+└── relatorios/                → relatórios .csv — criado em runtime
+```
 
-A organização do código-fonte segue a separação de responsabilidades recomendada:
+> **MVC** = separação de responsabilidades: o Model calcula mas não imprime; a View só faz I/O;
+> o Controller coordena; a Persistência é a única com acesso a arquivo.
 
-* `Main.java` - Ponto de entrada e menu interativo.
-* `classes/` - Entidades e modelos de negócio.
-* `interfaces/` e `abstract/` - Contratos e classes base do sistema.
-* `arquivos/` - Lógica de leitura e escrita para persistência.
-* `relatorios/` - Geração e formatação de saídas de dados.
-* `utils/` - Classes utilitárias e ferramentas auxiliares.
+## ▶️ Como executar
 
-## 📝 Padrões de Versionamento (Git)
+Pelo VSCode: abra a pasta e rode o `Main.java` (botão *Run*).
 
-Para garantir um histórico organizado durante a evolução do código, o repositório adota o seguinte padrão semântico para commits:
+Pelo terminal (a partir da raiz do projeto):
+```bash
+javac -d bin Main.java model/*.java view/*.java controller/*.java persistencia/*.java
+java -cp bin Main
+```
 
-* `feat`: Adição de nova funcionalidade (ex: criação do login, nova classe).
-* `fix`: Correção de bugs ou falhas nas regras de negócio.
-* `docs`: Atualizações na documentação ou comentários.
-* `refactor`: Reestruturação de código que não altera o comportamento externo.
+### Dados de demonstração (criados na 1ª execução)
+Senha padrão de todos: **`1234`**
 
-## ✅ Checklist de Conclusão
+| Login | Tipo | Plano |
+|---|---|---|
+| `ana`, `carlos` | Médicos | — |
+| `joao` | Paciente | Unimed (50%) |
+| `maria` | Paciente | Hospitalar (25%) |
+| `jose` | Paciente | Particular (sem desconto) |
 
-- [ ] Sistema executando corretamente
-- [ ] Login e controle de senhas funcionando
-- [ ] Uso de herança, polimorfismo e interfaces/classes abstratas
-- [ ] Dados sendo persistidos em arquivos corretamente
-- [ ] Relatórios e menu interativo operacionais
-- [ ] Código organizado e método `toString` implementado
+## 👥 Autores
+
+Trabalho em dupla — **Felipe** (camada Model) e **Higor** (View, Controller e Persistência).
+
+## 📝 Padrão de commits
+
+`feat` (nova funcionalidade) · `fix` (correção) · `docs` (documentação) · `refactor` (reestruturação) · `chore` (manutenção)
+
+## ✅ Checklist de conclusão
+
+- [x] Sistema executando corretamente
+- [x] Login e controle de senhas (3 tentativas + troca + regra das 3 últimas)
+- [x] Herança, polimorfismo e interface/classe abstrata
+- [x] Dados persistidos em arquivo (leitura e escrita)
+- [x] Relatórios e menu interativo operacionais
+- [x] Código organizado em MVC e `toString()` em todas as classes

@@ -15,8 +15,8 @@ public class AtendimentoView {
     }
 
     public void mostrarMedicos(ArrayList<Medico> medicos) {
-        for (Medico medico : medicos) {
-            System.out.println(medico);
+        for (int i = 0; i < medicos.size(); i++) {
+            System.out.println(i + " - " + medicos.get(i));
         }
     }
 

@@ -56,7 +56,7 @@ public class Paciente extends Usuario implements Exportavel {
                     + getNomePaciente() + ";" + getCpf() + ";" + particular;
         } else {
             return "P" + ";" + getLogin() + ";" + getSenha() + ";" + String.join(",", historicoSenhas) + ";"
-                    + getNomePaciente() + ";" + getCpf() + ";" + plano.getNomePlano();
+                    + getNomePaciente() + ";" + getCpf() + ";" + plano.getNomePlano() + ";" + plano.getTemObstetricia() + ";" + plano.getPercentualCobertura();
         }
     }
 }

@@ -40,6 +40,10 @@ public class AtendimentoView {
     }
 
     public int pedirTipoAtendimento(){
+        System.out.println("Tipos de atendimento disponíveis:");
+        System.out.println("1 - Consulta");
+        System.out.println("2 - Exame");
+        System.out.println("3 - Cirurgia");
         System.out.print("Digite o n° do atendimento desejado: ");
         return Integer.parseInt(entrada.nextLine());
     }

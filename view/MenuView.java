@@ -9,9 +9,9 @@ public class MenuView {
         System.out.println("==========================");
         System.out.println("       MENU PRINCIPAL     ");
         System.out.println("==========================");
-        System.out.println("1 - Cadastrar");
-        System.out.println("2 - Consultar");
-        System.out.println("3 - Alterar");
+        System.out.println("1 - Cadastrar paciente/médico");
+        System.out.println("2 - Listar pacientes/medicos");
+        System.out.println("3 - Alterar login");
         System.out.println("4 - Excluir");
         System.out.println("5 - Atendimentos");
         System.out.println("6 - Relatório");

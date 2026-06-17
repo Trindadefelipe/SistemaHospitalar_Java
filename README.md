@@ -72,7 +72,7 @@ Senha padrão de todos: **`1234`**
 
 ## 👥 Autores
 
-Trabalho em dupla — **Felipe** (camada Model) e **Higor** (View, Controller e Persistência).
+Trabalho em dupla — **Felipe** (camada Model, View, Controller) e **Higor** (View, Controller e Persistência).
 
 ## 📝 Padrão de commits
 
